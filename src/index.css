@@ -1,5 +1,5 @@
 @import "tailwindcss";
-*{
+#root{
   margin:0;
   padding:0;
   box-sizing: border-box;
@@ -8,4 +8,16 @@
 html, body, #root {
   height: 100%;
  width: 100%;
+ 
 }
+
+/* :root {
+  --color-1: #f43f5e;
+  --color-2: #0ea5e9;
+  --color-3: #10b981;
+  --color-4: #f59e42;
+}
+.particle .point {
+  background: var(--color, white);
+  box-shadow: 0 0 14px 4px var(--color, white), 0 0 32px 8px var(--color, white);
+} */

@@ -1,18 +1,23 @@
 import React from 'react'
 
-import LiquidChrome from './components/Home/LiquidChrome';
+import LiquidChrome from './components/Hero/LiquidChrome';
+import Navbar from './components/Navbar';
+import Home from './Pages/Home';
+import MainRoutes from './Routes/MainRoutes';
+
+
+
 const App = () => {
   return (
 
 
     <div className="w-full h-screen relative">
 
-      <LiquidChrome
-        baseColor={[0.6, 0.5, 0.3]}
-        speed={0.14}
-        amplitude={0.6}
-        interactive={true}
-      />
+  
+    <Navbar/>
+    <MainRoutes/>
+
+
     </div>
 
 
@@ -20,3 +25,7 @@ const App = () => {
 }
 
 export default App
+
+
+
+
