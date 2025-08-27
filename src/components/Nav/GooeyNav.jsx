@@ -151,7 +151,7 @@ const GooeyNav = ({
             z-index: 1;
           }
           .effect.text {
-            font-size : 24px;
+            font-size : 20px;
             font-weight: bold;
             color: white;
             transition: color 0.3s ease;
@@ -284,7 +284,7 @@ const GooeyNav = ({
         >
           <ul
             ref={navRef}
-            className="flex gap-8 list-none p-0 px-4 m-0 relative z-[3] font-semibold text-2xl"
+            className="flex gap-4 list-none p-0 px-4 m-0 relative z-[3] font-semibold text-[20px] xl:gap-8"
             style={{
               color: "white",
               textShadow: "0 1px 1px hsl(205deg 30% 10% / 0.2)",
@@ -300,7 +300,7 @@ const GooeyNav = ({
                   onClick={(e) => handleClick(e, index)}
                   to={item.href}
                   onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="outline-none py-[0.6em] px-[1em] inline-block"
+                  className="outline-none py-[0.3em] px-[0.6em] inline-block"
                 >
                   {item.label}
                 </Link>

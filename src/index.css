@@ -1,13 +1,34 @@
 @import "tailwindcss";
+
 #root{
   margin:0;
   padding:0;
   box-sizing: border-box;
 }
-
+@font-face {
+  font-family: cinzel;
+  src: url('./assets/font1/Cinzel-Regular.otf');
+}
+@font-face {
+  font-family: cinzelDec;
+  src: url('./assets/font1/CinzelDecorative-Regular.otf');
+}
+@font-face {
+  font-family: cinzelBold;
+  src: url('./assets/font1/Cinzel-Bold.otf');
+}
+@font-face {
+  font-family: cinzelBlack;
+  src: url('./assets/font1/Cinzel-Black.otf');
+}
+@font-face {
+  font-family: cinzelDecBlack;
+  src: url('./assets/font1/CinzelDecorative-Black.otf');
+}
 html, body, #root {
   height: 100%;
  width: 100%;
+ font-family: cinzelDec;
  
 }
 
