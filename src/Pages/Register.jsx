@@ -4,16 +4,18 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import {useDispatch} from 'react-redux';
+import { asyncRegisterUser } from '../store/actions/userActions';
 
 export default function Register() {
     const navigate= useNavigate();
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
         reset,
         formState: { errors },
     } = useForm();
-
     const onRegisterHandler = (user) => {
         user.id = nanoid();
         user.isAdmin = false;
@@ -21,6 +23,7 @@ export default function Register() {
         reset();
 
         user.cart = [];
+        dispatch(asyncRegisterUser(user));
         toast.success('Registered Successfully');
         navigate('/login')
     };

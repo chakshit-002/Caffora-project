@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { useForm } from "react-hook-form";
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { asyncLoginUser } from '../store/actions/userActions';
 
 export default function Login() {
     const {
@@ -11,10 +13,11 @@ export default function Login() {
         reset,
         formState: { errors },
     } = useForm();
-
+    const dispatch = useDispatch();
     const onLoginHandler = (user) => {
         console.log("Form Data:", user);
         reset();
+        dispatch(asyncLoginUser(user));
         toast.success('Login Successfully!')
     };
 
