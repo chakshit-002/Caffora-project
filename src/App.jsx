@@ -12,11 +12,12 @@ const App = () => {
   return (
 
 
-    <div className="w-full h-screen relative">
+    <div className="w-full h-[100%] relative">
 
 
       <Navbar />
       <MainRoutes />
+      <div className='h-[100vh]'></div>
       <Footer />
 
     </div>
