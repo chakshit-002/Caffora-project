@@ -118,6 +118,9 @@
 
 
 import React, { useState, useMemo, lazy, Suspense } from "react";
+import { useDispatch } from "react-redux";
+import { asyncLogoutUser } from "../store/actions/userActions";
+import { useNavigate } from "react-router-dom";
 
 // Lazy load heavy components
 const GooeyNav = lazy(() => import("./Nav/GooeyNav"));
@@ -125,17 +128,22 @@ const GooeyNav = lazy(() => import("./Nav/GooeyNav"));
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // Memoize nav items
   const items = useMemo(() => [
     { label: "Home", href: "/" },
-    { label: "Products", href: "/about" },
+    { label: "Products", href: "/products" },
     { label: "Contact", href: "#" },
   ], []);
 
   const toggleDropdown = () => setDropdownOpen(prev => !prev);
   const toggleMobileMenu = () => setMobileMenuOpen(prev => !prev);
-
+  const LogoutUserHandler = () => {
+    dispatch(asyncLogoutUser());
+    setDropdownOpen(false);
+    navigate('/login');
+  }
   return (
     <nav className="fixed top-0 left-0 w-full bg-black/10 backdrop-blur-md z-50 flex justify-between items-center px-6 md:px-10 py-1">
       {/* LOGO */}
@@ -178,7 +186,7 @@ const Navbar = () => {
               <ul className="py-1">
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Settings</li>
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">CreateProduct</li>
-                <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+                <li onClick={LogoutUserHandler} className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
                   <i className="ri-logout-box-r-fill"></i> Logout
                 </li>
               </ul>
@@ -219,7 +227,7 @@ const Navbar = () => {
             {/* Icons */}
             <div className="mt-6 flex items-center gap-4">
               <i className="ri-shopping-cart-fill text-2xl"></i>
-              <button className="flex items-center gap-2">
+              <button type="button" onClick={LogoutUserHandler} className="flex items-center gap-2">
                 <i className="ri-logout-box-r-fill text-2xl"></i> Logout
               </button>
             </div>
