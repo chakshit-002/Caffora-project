@@ -1,29 +1,31 @@
-import React from 'react'
-import {Routes,Route} from 'react-router-dom'
-import Home from '../Pages/Home'
-import About from '../Pages/About'
-import Register from '../Pages/Register'
-import Login from '../Pages/Login'
-import AuthWrapper from './AuthWrapper'
-import UnAuthWrapper from './UnAuthWrapper'
-import Products from '../Pages/Products'
-import ProductPage from '../components/ProductPage'
-import CreateProduct from '../Pages/admin/CreateProduct'
+    import React from 'react'
+    import {Routes,Route} from 'react-router-dom'
+    import Home from '../Pages/Home'
+    import About from '../Pages/About'
+    import Register from '../Pages/Register'
+    import Login from '../Pages/Login'
+    import AuthWrapper from './AuthWrapper'
+    import UnAuthWrapper from './UnAuthWrapper'
+    import Products from '../Pages/Products'
+    import ProductPage from '../components/ProductPage'
+    import CreateProduct from '../Pages/admin/CreateProduct'
+    import Settings from '../Pages/Settings'
 
-const MainRoutes = () => {
-    return (
-        <div>
-            <Routes>
-                <Route path="/home" element={<AuthWrapper><Home /></AuthWrapper>} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductPage />} />
-                <Route path="/create-product" element={<CreateProduct />} />
-                <Route path="/register" element={<UnAuthWrapper><Register /></UnAuthWrapper>} />
-                <Route path="/login" element={<UnAuthWrapper><Login /></UnAuthWrapper>} />
-            </Routes>
+    const MainRoutes = () => {
+        return (
+            <div>
+                <Routes>
+                    <Route path="/home" element={<AuthWrapper><Home /></AuthWrapper>} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/products/:id" element={<ProductPage />} />
+                    <Route path="/create-product" element={<CreateProduct />} />
+                    <Route path="/register" element={<UnAuthWrapper><Register /></UnAuthWrapper>} />
+                    <Route path="/login" element={<UnAuthWrapper><Login /></UnAuthWrapper>} />
+                    <Route path='/settings' element={<AuthWrapper><Settings/></AuthWrapper>}/>
+                </Routes>
 
-        </div>
-    )
-}
+            </div>
+        )
+    }
 
-export default MainRoutes
+    export default MainRoutes

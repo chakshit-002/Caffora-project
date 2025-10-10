@@ -56,7 +56,7 @@ const ProductPage = () => {
                             {/* Only render if product.image[1] exists */}
                             {product.image[1] && (
                                 <img
-                                    className='absolute inset-0  w-fit lg:w-full lg:h-[78vh] lg:object-cover rounded-lg  opacity-0 group-hover:opacity-100 transition-opacity duration-300'
+                                    className='absolute inset-0  w-fit  lg:w-full lg:h-[78vh] lg:object-cover rounded-lg  opacity-0 group-hover:opacity-100 transition-opacity duration-300'
                                     src={product.image[1]}
                                     alt={`${product.title} (hover)`}
                                 />
