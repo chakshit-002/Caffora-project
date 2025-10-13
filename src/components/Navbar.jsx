@@ -19,9 +19,10 @@ const Navbar = () => {
 
     const items = useMemo(() => {
         const baseItems = [
-            { label: "Home", href: "/home" },
+            { label: "Home", href: "/" },
             { label: "Products", href: "/products" },
-            { label: "Contact", href: "/contact" },
+            { label: "Settings", href: "/settings" },
+            { label: "", href: "/cart" },
         ];
         // Add "Create Product" only if the user is an admin
         if (isAuthenticated && users?.isAdmin) {
@@ -92,7 +93,7 @@ const Navbar = () => {
                             <div ref={dropdownRef} className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50">
                                 <ul className="py-1">
                                     <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                                        <NavLink to="/settings" className="block">Settings</NavLink>
+                                        <NavLink to="/settings" className="block">{users.name}</NavLink>
                                     </li>
                                     <li onClick={LogoutUserHandler} className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
                                         <i className="ri-logout-box-r-fill"></i> Logout
@@ -144,11 +145,7 @@ const Navbar = () => {
                         {/* Conditional Links */}
                         {isAuthenticated ? (
                             <>
-                                <li>
-                                    <NavLink to="/settings" onClick={toggleMobileMenu} className="hover:text-[brown]">
-                                        Settings
-                                    </NavLink>
-                                </li>
+                               
                                 <li>
                                     <button type="button" onClick={LogoutUserHandler} className="flex items-center gap-2 hover:text-[brown]">
                                         <i className="ri-logout-box-r-fill text-2xl"></i> Logout

@@ -10,18 +10,22 @@
     import ProductPage from '../components/ProductPage'
     import CreateProduct from '../Pages/admin/CreateProduct'
     import Settings from '../Pages/Settings'
+    import PageNotFound from '../Pages/PageNotFound'
+import Cart from '../Pages/Cart'
 
     const MainRoutes = () => {
         return (
             <div>
                 <Routes>
-                    <Route path="/home" element={<AuthWrapper><Home /></AuthWrapper>} />
+                    <Route path="/" element={<AuthWrapper><Home /></AuthWrapper>} />
                     <Route path="/products" element={<Products />} />
                     <Route path="/products/:id" element={<ProductPage />} />
                     <Route path="/create-product" element={<CreateProduct />} />
                     <Route path="/register" element={<UnAuthWrapper><Register /></UnAuthWrapper>} />
                     <Route path="/login" element={<UnAuthWrapper><Login /></UnAuthWrapper>} />
                     <Route path='/settings' element={<AuthWrapper><Settings/></AuthWrapper>}/>
+                    <Route path='/cart' element={<AuthWrapper><Cart/></AuthWrapper>}/>
+                    <Route path = '*'  element = {<PageNotFound/>}/>
                 </Routes>
 
             </div>

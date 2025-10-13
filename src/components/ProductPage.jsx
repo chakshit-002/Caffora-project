@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'; // Import useDispatch
 import { useParams } from 'react-router-dom';
 import { asyncLoadProducts } from '../store/actions/productActions'; // Assuming you have an action to fetch products
 import UpdateProduct from '../Pages/admin/UpdateProduct';
+import { asyncUpdateUser } from '../store/actions/userActions';
 
 const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
@@ -23,7 +24,24 @@ const ProductPage = () => {
     const handleQuantityChange = (change) => {
         setQuantity(prev => Math.max(1, prev + change));
     };
+    const AddToCartHandler = (product)=>{
 
+        const copyUser = {...user, cart:[...user.cart]}
+
+        const findProductInCart = copyUser.cart.findIndex((c)=>c?.product?.id == product.id)
+
+        if(findProductInCart==-1){
+
+            copyUser.cart.push({product,quantity})
+        }
+        else{
+            copyUser.cart[findProductInCart] = {
+                product,
+                quantity: quantity
+            }
+        }
+         dispatch(asyncUpdateUser(copyUser.id,copyUser))
+    }
     // Handle different states: loading, error, and data
     if (loading) {
         return <div className="flex items-center justify-center h-screen">Loading...</div>;
@@ -110,7 +128,8 @@ const ProductPage = () => {
                                     +
                                 </button>
                             </div>
-                            <button className=" max-[411px]:w-full bg-[#ba964d] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#9C824E] transition flex-grow cursor-pointer">
+                            <button onClick = {()=>AddToCartHandler(product)} className=" max-[411px]:w-full bg-[#ba964d] text-white px-6 py-3 rounded-md font-semibold hover:bg-[#9C824E] transition flex-grow cursor-pointer active:scale-[0.97
+                            ]">
                                 ADD TO CART
                             </button>
                         </div>
